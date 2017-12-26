@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import menu.Menu;
 import resources.GameRectangle;
+import spacevader.Game;
 
 
 /**
@@ -19,7 +20,10 @@ public class Main {
 
         Menu mainMenu = new Menu();
 
-        frame.add(mainMenu);
+        //frame.add(mainMenu);
+
+        Game spacegame = new Game(frame);
+        frame.add(spacegame);
 
     }
 
