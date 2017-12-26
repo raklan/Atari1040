@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import menu.Menu;
+import resources.GameRectangle;
+
 
 /**
  * Created by Ryan on 12/18/2017.

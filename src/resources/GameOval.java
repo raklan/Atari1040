@@ -1,23 +1,25 @@
+package resources;
+
 import javax.swing.*;
 import java.awt.*;
 
-/** Oval Supplier Class 
+/** resources.GameOval Supplier Class
  * Author: David D. Riley
  * Date: April, 2004
  */
-public class Oval extends JComponent  {
+public class GameOval extends JComponent  {
 
     /** post:   getX() == x  and  getY() == y
      *          and  getWidth() == w  and getHeight() == h
      *          and  getBackground() == Color.black
      */
-	public Oval(int x, int y, int w, int h)  {
+	public GameOval(int x, int y, int w, int h)  {
         super();
 		setBounds(x, y, w, h);
         setBackground(Color.black);
 	}
 
-    /** post:   this method draws a filled Oval
+    /** post:   this method draws a filled resources.GameOval
      *          and  the upper left corner of the bounding rectangle is (getX(), getY()) 
      *          and  the oval's dimensions are getWidth() and getHeight()
      *          and  the oval's color is getBackground()
