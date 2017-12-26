@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import menu.*;
+import menu.Menu;
 import resources.GameRectangle;
 
 
@@ -17,7 +17,7 @@ public class Main {
         frame.setLayout(null);
         frame.getContentPane().setBackground(Color.BLUE);
 
-        menu.Menu mainMenu = new menu.Menu();
+        Menu mainMenu = new Menu();
 
         frame.add(mainMenu);
 
