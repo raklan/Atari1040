@@ -24,11 +24,10 @@ public class Menu {
             URL url = new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif");
             Icon icon = new ImageIcon(url);
             title = new JLabel(icon);
+
         }catch(Exception e){
             e.printStackTrace();
         }
-
-        title.setLocation(350,50);
 
         option1 = new GameRectangle(550,400,400,100);
         option1.setBackground(Color.WHITE);
