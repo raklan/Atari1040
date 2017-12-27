@@ -3,21 +3,32 @@ package menu;
 import javax.swing.*;
 import resources.*;
 import java.awt.*;
-public class Menu extends GameRectangle {
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
-    private GameRectangle title;
+public class Menu {
+
+    private JLabel title;
     private GameRectangle sel;
     private GameRectangle option1;
     private GameRectangle option2;
     private GameRectangle option3;
     private GameRectangle exit;
 
-    public Menu(){
-        super(0,0,1500,1000);
-        this.setBackground(Color.BLACK);
+    ArrayList<JLabel> objects = new ArrayList<JLabel>();
 
-        title = new GameRectangle(350,50,800,300);
-        title.setBackground(Color.WHITE);
+    public Menu(){
+
+        try {
+            URL url = new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif");
+            Icon icon = new ImageIcon(url);
+            title = new JLabel(icon);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        title.setLocation(350,50);
 
         option1 = new GameRectangle(550,400,400,100);
         option1.setBackground(Color.WHITE);
@@ -34,14 +45,22 @@ public class Menu extends GameRectangle {
         sel = new GameRectangle(400,425,100,50);
         sel.setBackground(Color.WHITE);
 
-        this.add(title);
-        this.add(option1);
-        this.add(option2);
-        this.add(option3);
-        this.add(exit);
-        this.add(sel);
+        objects.add(title);
 
     }
 
+    public JLabel makeGif(){
+        try {
+            Icon icon = new ImageIcon(new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif"));
+            JLabel label = new JLabel(icon);
+            return label;
+        }catch(MalformedURLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public ArrayList<JLabel> getList(){
+        return objects;
+    }
 
 }
