@@ -1,39 +1,35 @@
-import javax.swing.*;
-import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import menu.Menu;
-import resources.GameRectangle;
-
+import menu.NewMenu;
 
 /**
  * Created by Ryan on 12/18/2017.
  */
 public class Main {
 
-    static JFrame frame = new JFrame("Atari Emulator 1040");
+//    static JFrame frame = new JFrame("Atari Emulator 1040");
 
-    public static void main(String[]args)throws MalformedURLException{
-        frame.setVisible(true);
-        frame.setBounds(0,0,1500,1000);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(Color.BLUE);
+    public static void main(String[]args){
+//        frame.setVisible(true);
+//        frame.setBounds(0,0,1500,1000);
+//        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+//        frame.getContentPane().setBackground(Color.BLUE);
 
         mainMenu();
 
     }
-    public static void mainMenu()throws MalformedURLException{
 
-        Menu menu = new Menu();
+    public static void mainMenu() {
 
-        for(JLabel l: menu.getList()){
-            frame.add(l);
-            l.setLocation(350,50);
-        }
-        frame.setVisible(true);
+        //Menu menu = new Menu();
+        NewMenu menu = new NewMenu();
 
-        frame.getContentPane().setBackground(Color.BLACK);
+
+//        for(JLabel l: menu.getList()){
+//            frame.add(l);
+//            l.setLocation(350,50);
+//        }
+//        frame.setVisible(true);
+//
+//        frame.getContentPane().setBackground(Color.BLACK);
     }
 
 

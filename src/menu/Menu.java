@@ -1,14 +1,17 @@
 package menu;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import resources.*;
 import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
+/*
+not used... look at NewMenu
+ */
 public class Menu {
 
+    JFrame frame = new JFrame("Atari Emulator 1040");
     private JLabel title;
     private GameRectangle sel;
     private GameRectangle option1;
@@ -16,27 +19,20 @@ public class Menu {
     private GameRectangle option3;
     private GameRectangle exit;
 
-    ArrayList<JLabel> objects = new ArrayList<JLabel>();
 
-    public Menu(){
+    ArrayList<JLabel> menuObjects = new ArrayList<>();
 
-        try {
-            URL url = new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif");
-            Icon icon = new ImageIcon(url);
-            title = new JLabel(icon);
+    public Menu() {
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        //frame.setVisible(true);
+        frame.setBounds(0, 0, 1500, 1000);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.getContentPane().setBackground(Color.BLUE);
+        //frame.pack();
+        frame.setLocationByPlatform(true);
 
-        option1 = new GameRectangle(550,400,400,100);
-        option1.setBackground(Color.WHITE);
 
-        option2= new GameRectangle(550,550,400,100);
-        option2.setBackground(Color.WHITE);
-
-        option3 = new GameRectangle(550,700,400,100);
-        option3.setBackground(Color.WHITE);
+        createTitle();
 
         exit = new GameRectangle(550,850,400,100);
         exit.setBackground(Color.WHITE);
@@ -44,22 +40,43 @@ public class Menu {
         sel = new GameRectangle(400,425,100,50);
         sel.setBackground(Color.WHITE);
 
-        objects.add(title);
+        frame.setVisible(true);
+
+//        option1 = new GameRectangle(550,400,400,100);
+//        option1.setBackground(Color.WHITE);
+//
+//        option2= new GameRectangle(550,550,400,100);
+//        option2.setBackground(Color.WHITE);
+//
+//        option3 = new GameRectangle(550,700,400,100);
+//        option3.setBackground(Color.WHITE);
+//
+
+
 
     }
 
-    public JLabel makeGif(){
+    private void createTitle() {
         try {
-            Icon icon = new ImageIcon(new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif"));
-            JLabel label = new JLabel(icon);
-            return label;
-        }catch(MalformedURLException e){
+            BufferedImage bi = ImageIO.read(getClass().getResource("/resources/images/AtariRainbow.gif"));
+            //BufferedImage bi = ImageIO.read(new URL("file://./resources/images/AtariRainbow.gif"));
+            ImageIcon backgroundImage = new ImageIcon(bi.getScaledInstance(250, 100, Image.SCALE_SMOOTH));
+            //title = new JLabel(backgroundImage);
+            //title = new JLabel(new ImageIcon(bi));
+            title = new JLabel();
+
+            //title.setLocation(500,50);
+            title.setIcon(backgroundImage);
+
+            frame.add(title);
+            //menuObjects.add(title);
+
+        } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
-    }
-    public ArrayList<JLabel> getList(){
-        return objects;
+
+
     }
 
 }
+
