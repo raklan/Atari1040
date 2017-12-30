@@ -12,28 +12,30 @@ public class NewMenu extends JFrame {
     JLabel menuItem1 = new JLabel();
     JLabel menuItem2 = new JLabel();
     JLabel menuItem3 = new JLabel();
-    JLabel buttons = new JLabel();
+    JLabel selector = new JLabel();
 
     public NewMenu() {
         try {
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             contentPane = (JPanel) getContentPane();
             contentPane.setLayout(new BorderLayout());
-            contentPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+            //contentPane.setAlignmentX(Component.CENTER_ALIGNMENT);
             contentPane.setBackground(Color.black);
 
             setSize(new Dimension(1500, 900));
             setTitle("Atari Emulator 1040!");
 
-            SetHeaderText();
+            //SetHeaderText();
             SetTitleImage();
-            SetMenuItems();
-            SetButtons();
+            //SetMenuItems();
+            SetSelector();
 
 
             // show it
             this.setLocationRelativeTo(null);
             this.setVisible(true);
+
+
         } catch (Exception exception)
 
         {
@@ -54,10 +56,11 @@ public class NewMenu extends JFrame {
         //this will resize the image, but it breaks the animation
 //            BufferedImage bi = ImageIO.read(getClass().getResource("/resources/images/AtariRainbow.gif"));
 //            ImageIcon titleImage = new ImageIcon(bi.getScaledInstance(250, 100, Image.SCALE_SMOOTH));
-        ImageIcon titleImage = new ImageIcon(this.getClass().getResource("/resources/images/Atari_Header-sm.gif"));
+        ImageIcon titleImage = new ImageIcon(this.getClass().getResource("/resources/images/AtariRainbowResized.gif"));
         imageLabel.setIcon(titleImage);
 
         contentPane.add(imageLabel, BorderLayout.NORTH);
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     private void SetMenuItems(){
@@ -77,9 +80,12 @@ public class NewMenu extends JFrame {
         contentPane.add(menuItem3, BorderLayout.LINE_END);
     }
 
-    private void SetButtons(){
-        JButton button = new JButton("Close");
-         contentPane.add(button, BorderLayout.SOUTH);
+    private void SetSelector(){
+        ImageIcon sel = new ImageIcon(this.getClass().getResource("/resources/images/ArrowWhite.gif"));
+        selector.setIcon(sel);
+
+        contentPane.add(selector, BorderLayout.CENTER);
+        selector.setHorizontalAlignment(SwingConstants.CENTER);
     }
 }
 
