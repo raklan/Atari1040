@@ -2,6 +2,7 @@ package menu;
 
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class NewMenu extends JFrame {
@@ -27,8 +28,8 @@ public class NewMenu extends JFrame {
 
             //SetHeaderText();
             SetTitleImage();
-            //SetMenuItems();
-            SetSelector();
+            SetMenuItems();
+            //SetSelector();
 
 
             // show it
@@ -67,12 +68,20 @@ public class NewMenu extends JFrame {
         menuItem1.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         menuItem1.setText("Game Option #1");
         menuItem1.setForeground(Color.white);
-        contentPane.add(menuItem1, BorderLayout.LINE_START);
+        menuItem1.setSize(new Dimension(400,100));
+        menuItem1.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        contentPane.add(menuItem1, BorderLayout.CENTER);
+        menuItem1.setHorizontalAlignment(SwingConstants.CENTER);
+        menuItem1.setVerticalAlignment(SwingConstants.TOP);
 
         menuItem2.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         menuItem2.setText("Game Option #2");
         menuItem2.setForeground(Color.white);
+        menuItem2.setSize(new Dimension(400,100));
+        menuItem2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         contentPane.add(menuItem2, BorderLayout.CENTER);
+        menuItem2.setHorizontalAlignment(SwingConstants.CENTER);
+        menuItem2.setVerticalAlignment(SwingConstants.CENTER);
 
         menuItem3.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         menuItem3.setText("Game Option #3");

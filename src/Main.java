@@ -1,4 +1,7 @@
+import menu.MenuGUI;
 import menu.NewMenu;
+
+import javax.swing.*;
 
 /**
  * Created by Ryan on 12/18/2017.
@@ -13,6 +16,9 @@ public class Main {
 //        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 //        frame.getContentPane().setBackground(Color.BLUE);
 
+        JFrame frame = new JFrame("Menu");
+        frame.setContentPane(new MenuGUI().$$$getRootComponent$$$());
+
         mainMenu();
 
     }
@@ -20,7 +26,8 @@ public class Main {
     public static void mainMenu() {
 
         //Menu menu = new Menu();
-        NewMenu menu = new NewMenu();
+        //NewMenu menu = new NewMenu();
+
 
 
 //        for(JLabel l: menu.getList()){
