@@ -21,7 +21,7 @@ public class Menu {
     public Menu(){
 
         try {
-            URL url = new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif");
+            URL url = new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbowResized.gif");
             Icon icon = new ImageIcon(url);
             title = new JLabel(icon);
 
@@ -50,7 +50,7 @@ public class Menu {
 
     public JLabel makeGif(){
         try {
-            Icon icon = new ImageIcon(new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbow.gif"));
+            Icon icon = new ImageIcon(new URL("file://localhost/Users/Ryan/Documents/GitHub/Atari1040/src/AtariRainbowResized.gif"));
             JLabel label = new JLabel(icon);
             return label;
         }catch(MalformedURLException e){
