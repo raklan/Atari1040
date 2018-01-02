@@ -19,7 +19,6 @@ public class NewMenu extends JFrame {
         try {
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             contentPane = (JPanel) getContentPane();
-            contentPane.setLayout(new BorderLayout());
             //contentPane.setAlignmentX(Component.CENTER_ALIGNMENT);
             contentPane.setBackground(Color.black);
 
@@ -50,7 +49,7 @@ public class NewMenu extends JFrame {
         headerLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
         headerLabel.setText("Choose the game you wsh to play!");
         headerLabel.setForeground(Color.white);
-        contentPane.add(headerLabel, BorderLayout.NORTH);
+        contentPane.add(headerLabel);
     }
 
     private void SetTitleImage() {
@@ -60,7 +59,7 @@ public class NewMenu extends JFrame {
         ImageIcon titleImage = new ImageIcon(this.getClass().getResource("/resources/images/AtariRainbowResized.gif"));
         imageLabel.setIcon(titleImage);
 
-        contentPane.add(imageLabel, BorderLayout.NORTH);
+        contentPane.add(imageLabel, SwingConstants.TOP);
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
@@ -68,9 +67,9 @@ public class NewMenu extends JFrame {
         menuItem1.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         menuItem1.setText("Game Option #1");
         menuItem1.setForeground(Color.white);
-        menuItem1.setSize(new Dimension(400,100));
+        menuItem1.setSize(400,100);
         menuItem1.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        contentPane.add(menuItem1, BorderLayout.CENTER);
+        contentPane.add(menuItem1, SwingConstants.CENTER);
         menuItem1.setHorizontalAlignment(SwingConstants.CENTER);
         menuItem1.setVerticalAlignment(SwingConstants.TOP);
 
@@ -79,21 +78,21 @@ public class NewMenu extends JFrame {
         menuItem2.setForeground(Color.white);
         menuItem2.setSize(new Dimension(400,100));
         menuItem2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        contentPane.add(menuItem2, BorderLayout.CENTER);
+        contentPane.add(menuItem2, SwingConstants.CENTER);
         menuItem2.setHorizontalAlignment(SwingConstants.CENTER);
         menuItem2.setVerticalAlignment(SwingConstants.CENTER);
 
         menuItem3.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         menuItem3.setText("Game Option #3");
         menuItem3.setForeground(Color.white);
-        contentPane.add(menuItem3, BorderLayout.LINE_END);
+        contentPane.add(menuItem3, SwingConstants.CENTER);
     }
 
     private void SetSelector(){
         ImageIcon sel = new ImageIcon(this.getClass().getResource("/resources/images/ArrowWhite.gif"));
         selector.setIcon(sel);
 
-        contentPane.add(selector, BorderLayout.CENTER);
+        contentPane.add(selector, SwingConstants.CENTER);
         selector.setHorizontalAlignment(SwingConstants.CENTER);
     }
 }

@@ -1,7 +1,8 @@
 import menu.MenuGUI;
-import menu.NewMenu;
+import menu.Menu;
 
 import javax.swing.*;
+import java.awt.Color;
 
 /**
  * Created by Ryan on 12/18/2017.
@@ -13,11 +14,10 @@ public class Main {
     public static void main(String[]args){
 //        frame.setVisible(true);
 //        frame.setBounds(0,0,1500,1000);
-//        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+ //       frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 //        frame.getContentPane().setBackground(Color.BLUE);
 
-        JFrame frame = new JFrame("Menu");
-        frame.setContentPane(new MenuGUI().$$$getRootComponent$$$());
+//        JFrame frame = new JFrame("Menu");
 
         mainMenu();
 
@@ -25,8 +25,8 @@ public class Main {
 
     public static void mainMenu() {
 
-        //Menu menu = new Menu();
-        //NewMenu menu = new NewMenu();
+        Menu menu = new Menu();
+        //Menu menu = new NewMenu();
 
 
 
@@ -34,7 +34,6 @@ public class Main {
 //            frame.add(l);
 //            l.setLocation(350,50);
 //        }
-//        frame.setVisible(true);
 //
 //        frame.getContentPane().setBackground(Color.BLACK);
     }
