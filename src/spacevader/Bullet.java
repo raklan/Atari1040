@@ -10,6 +10,11 @@ public class Bullet extends SpaceEntity{
     {
         super(x,y);
         setBackground(Color.blue);
+        setSize(10,10);
         isUp = u;
+        if(u)
+            dy = -20;
+        else
+            dy = 20;
     }
 }

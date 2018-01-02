@@ -19,9 +19,11 @@ public class Main {
         frame.setLayout(null);
         frame.getContentPane().setBackground(Color.BLUE);
 
-        //frame.add(mainMenu);
+        //mainMenu();
+
         Game spacegame = new Game(frame);
         frame.add(spacegame);
+        spacegame.requestFocusInWindow();
     }
     public static void mainMenu(){
         frame.getContentPane().setBackground(Color.BLACK);

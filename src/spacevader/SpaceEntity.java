@@ -4,7 +4,9 @@ import resources.GameRectangle;
 
 public class SpaceEntity extends GameRectangle{
 
-    private int x, y;
+    protected int x, y;
+    protected int dx = 0;
+    protected int dy = 0;
 
     protected SpaceEntity(int x, int y)
     {
@@ -13,15 +15,16 @@ public class SpaceEntity extends GameRectangle{
         this.y = y;
     }
 
-    protected void moveX(int x)
+    protected void move()
     {
-        this.x+=x;
+        x +=dx;
+        y+=dy;
         setLocation(x,y);
     }
 
-    protected void moveY(int y)
+    protected Bullet shoot(boolean up)
     {
-        this.y+=y;
-        setLocation(x,y);
+        Bullet b = new Bullet(getX()+getWidth()/2-5, getY(), up);
+        return b;
     }
 }
