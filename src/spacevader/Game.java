@@ -4,15 +4,19 @@ import resources.GameRectangle;
 import javax.swing.*;
 import java.awt.*;
 
-public class Game extends GameRectangle{
+public class Game extends JFrame{
 
     Alien[][] fleet;
     Ship ship;
 
-    public Game(JFrame win)
+    public Game()
     {
-        super(0,0,win.getWidth()-15, win.getHeight()-35);
-        setBackground(Color.black);
+        super("SpaceShooter");
+        setBounds(0,0,1500, 1000);
+        getContentPane().setBackground(Color.black);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
 
         int row = 20; //number of aliens per row
         int s = (getWidth()-row*50)/(row+1); //space between aliens

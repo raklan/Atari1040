@@ -20,8 +20,7 @@ public class Main {
         frame.getContentPane().setBackground(Color.BLUE);
 
         //frame.add(mainMenu);
-        Game spacegame = new Game(frame);
-        frame.add(spacegame);
+        Game spacegame = new Game();
     }
     public static void mainMenu(){
         frame.getContentPane().setBackground(Color.BLACK);
