@@ -1,17 +1,19 @@
 package menu;
+import resources.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-
-import resources.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
-/*
-not used... look at NewMenu
+/**
+ * By Ryan
  */
+
 public class Menu extends JFrame{
+
+    static private Random gen = new Random();
 
     private JPanel panel;
     private JLabel title;
@@ -64,9 +66,19 @@ public class Menu extends JFrame{
                         break;
                     }
                     case KeyEvent.VK_ENTER: {
-                        if (selLocation == 1){}
-                        else if(selLocation == 2){}
-                        else if(selLocation == 3){}
+                        if (selLocation == 1){
+                            //Instantiate Space Invaders Object
+                            //ExampleWindow window = new ExampleWindow();
+                            dispose();
+                        }
+                        else if(selLocation == 2){
+                            //Instantiate Jeff's Quest Object
+                            dispose();
+                        }
+                        else if(selLocation == 3){
+                            //Instantiate Pong Object
+                            dispose();
+                        }
                         else if(selLocation == 4){
                             dispose();
                         }
@@ -80,55 +92,53 @@ public class Menu extends JFrame{
         this.createOptions();
         this.addSel();
 
+        this.createStars();
+
         this.setVisible(true);
 
     }
 
     private void createTitle(){
-        title = new JLabel("ATARI EMULATOR 1040");
-        title.setForeground(Color.WHITE);
+        title = new JLabel("");
         title.setSize(new Dimension(800,300));
-        title.setFont(new Font("Comic Sans MS", Font.BOLD, 64));
-        title.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        ImageIcon theImage = new ImageIcon(this.getClass().getResource("/resources/images/LogoResized.png"));
+        title.setIcon(theImage);
         title.setLocation(350,0);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setVisible(true);
         this.add(title);
     }
     private void createOptions(){
-        option1 = new JLabel("Space Invaders");
+        option1 = new JLabel("");
         option1.setForeground(Color.WHITE);
         option1.setSize(new Dimension(400,100));
-        option1.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
+        option1.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/SpaceInvadersLogoWhite.png")));
         option1.setLocation(550,350);
-        option1.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         option1.setHorizontalAlignment(SwingConstants.CENTER);
         option1.setVisible(true);
 
         option2 = new JLabel("Jeff's Quest");
         option2.setForeground(Color.WHITE);
         option2.setSize(new Dimension(400,100));
-        option2.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
+        option2.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/JeffLogoWhite.png")));
         option2.setLocation(550,450);
-        option2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         option2.setHorizontalAlignment(SwingConstants.CENTER);
         option2.setVisible(true);
 
-        option3 = new JLabel("Pong");
+        option3 = new JLabel("");
         option3.setForeground(Color.WHITE);
         option3.setSize(new Dimension(400,100));
+        option3.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/Pong White.png")));
         option3.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
         option3.setLocation(550,550);
-        option3.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         option3.setHorizontalAlignment(SwingConstants.CENTER);
         option3.setVisible(true);
 
-        exit = new JLabel("Quit");
+        exit = new JLabel("");
         exit.setForeground(Color.WHITE);
         exit.setSize(new Dimension(400,100));
-        exit.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
+        exit.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/QuitWhiteLogo.png")));
         exit.setLocation(550,750);
-        exit.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         exit.setHorizontalAlignment(SwingConstants.CENTER);
         exit.setVisible(true);
 
@@ -139,15 +149,23 @@ public class Menu extends JFrame{
     }
 
     private void addSel(){
-        sel = new JLabel("-->");
+        sel = new JLabel("");
         sel.setForeground(Color.WHITE);
         sel.setSize(new Dimension(100,50));
-        sel.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
-        sel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        sel.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/ArrowResizedWhite.png")));
         sel.setLocation(425,375);
         sel.setHorizontalAlignment(SwingConstants.CENTER);
         sel.setVisible(true);
         this.add(sel);
+    }
+
+    private void createStars(){
+        for(int i = 0; i<=50; i++){
+            GameRectangle star = new GameRectangle(gen.nextInt(1400)+50, gen.nextInt(850)+100, 3,3);
+            star.setBackground(Color.WHITE);
+            star.setVisible(true);
+            this.add(star);
+        }
     }
 
 
