@@ -13,6 +13,11 @@ public class Paddle extends GameRectangle
     {
         super(x,y,w,h);
     }
+    public void moveUP() {
+        this.setLocation(getX(),getY()-5);
+    }
 
-    
+    public void moveDown() {
+        this.setLocation(getX(),getY()+5);
+    }
 }
