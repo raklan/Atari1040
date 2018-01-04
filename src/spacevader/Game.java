@@ -4,12 +4,12 @@ import resources.GameRectangle;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Rectangle;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Arrays;
 
 public class Game extends JFrame{
 
@@ -26,7 +26,7 @@ public class Game extends JFrame{
 
     public Game()
     {
-        super("SpaceShooter");
+        super("SpaceInvaders");
         setBounds(0,0,1500, 1000);
         getContentPane().setBackground(Color.black);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,7 +106,7 @@ public class Game extends JFrame{
                 Rectangle brec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
                 if (arec.intersects(brec)) {
                     remove(a);
-                    //fleet[ar][a] = null;
+                    Arrays.asList(ar).indexOf(a);
                     remove(b);
                     bullets.remove(b);
                     break;
