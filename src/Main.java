@@ -1,13 +1,11 @@
-<<<<<<< HEAD
+
 import javax.swing.*;
 import java.awt.*;
 import menu.Menu;
 import resources.GameRectangle;
 import spacevader.Game;
-=======
 import menu.MenuGUI;
 import menu.NewMenu;
->>>>>>> refs/remotes/origin/master
 
 import javax.swing.*;
 
@@ -34,6 +32,8 @@ public class Main {
         Game spacegame = new Game(frame);
         frame.add(spacegame);
         spacegame.requestFocusInWindow();
+        //frame.add(mainMenu);
+        Game spacegame = new Game();
     }
 
     public static void mainMenu() {

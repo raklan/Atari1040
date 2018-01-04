@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Game extends GameRectangle {
+public class Game extends JFrame{
 
     private Alien[][] fleet;
     private Ship ship;
@@ -24,11 +24,15 @@ public class Game extends GameRectangle {
     private boolean spacePressed = false;
     private final int speed = 20;
 
-    public Game(JFrame win)
+    public Game()
     {
-        super(0,0,win.getWidth()-15, win.getHeight()-35);
-        setBackground(Color.black);
-        this.win = win;
+
+        super("SpaceShooter");
+        setBounds(0,0,1500, 1000);
+        getContentPane().setBackground(Color.black);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
 
         int row = 20; //number of aliens per row
         int s = (getWidth()-row*50)/(row+1); //space between aliens
