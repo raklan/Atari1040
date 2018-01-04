@@ -2,7 +2,8 @@ package spacevader;
 import resources.GameRectangle;
 
 import javax.swing.JFrame;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -15,9 +16,8 @@ public class Game extends JFrame{
     private Alien[][] fleet;
     private Ship ship;
     private ArrayList<Bullet> bullets;
-    private Timer t = new Timer();;
+    private Timer t = new Timer();
     private int fps = 40;
-    private JFrame win;
 
     private boolean leftPressed = false;
     private boolean rightPressed = false;
@@ -26,11 +26,9 @@ public class Game extends JFrame{
 
     public Game()
     {
-
         super("SpaceShooter");
         setBounds(0,0,1500, 1000);
         getContentPane().setBackground(Color.black);
-        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
@@ -97,7 +95,7 @@ public class Game extends JFrame{
         });
 
         t.schedule(new MyTimerTask(), 0, 1000/fps);
-
+        setVisible(true);
     }
 
     public void checkCollision(Bullet b) {
@@ -108,7 +106,7 @@ public class Game extends JFrame{
                 Rectangle brec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
                 if (arec.intersects(brec)) {
                     remove(a);
-                    a = null;
+                    //fleet[ar][a] = null;
                     remove(b);
                     bullets.remove(b);
                     break;
@@ -131,7 +129,7 @@ public class Game extends JFrame{
             }
             checkCollision(b);
         }
-        win.repaint();
+        repaint();
     }
 
     public class MyTimerTask extends TimerTask
