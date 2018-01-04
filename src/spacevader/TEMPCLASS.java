@@ -4,7 +4,6 @@ import java.awt.*;
 
 public class TEMPCLASS {
 
-    Timer t = new Timer();
 
     public void checkCollision()
     {

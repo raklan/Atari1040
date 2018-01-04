@@ -2,7 +2,7 @@ package spacevader;
 import resources.GameRectangle;
 
 import javax.swing.JFrame;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -100,6 +100,23 @@ public class Game extends JFrame{
 
     }
 
+    public void checkCollision(Bullet b) {
+        for (Alien[] ar : fleet)
+        {
+            for (Alien a : ar) {
+                Rectangle arec = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+                Rectangle brec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
+                if (arec.intersects(brec)) {
+                    remove(a);
+                    a = null;
+                    remove(b);
+                    bullets.remove(b);
+                    break;
+                }
+            }
+        }
+    }
+
     private void act()
     {
         ship.move();
@@ -115,11 +132,6 @@ public class Game extends JFrame{
             checkCollision(b);
         }
         win.repaint();
-    }
-
-    public void checkCollision(Bullet b)
-    {
-
     }
 
     public class MyTimerTask extends TimerTask

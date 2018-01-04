@@ -9,4 +9,5 @@ public class Alien extends SpaceEntity{
         super(x,y);
         setBackground(Color.red);
     }
+
 }
