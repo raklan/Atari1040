@@ -7,6 +7,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import spacevader.*;
+
 /**
  * By Ryan
  */
@@ -68,7 +70,7 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
-                            ExampleWindow window = new ExampleWindow();
+                            Game space = new Game();
                             dispose();
                         }
                         else if(selLocation == 2){
