@@ -99,17 +99,20 @@ public class Game extends JFrame{
     }
 
     public void checkCollision(Bullet b) {
+        Rectangle brec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
+        Rectangle arec;
         for (Alien[] ar : fleet)
         {
             for (Alien a : ar) {
-                Rectangle arec = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
-                Rectangle brec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
-                if (arec.intersects(brec)) {
-                    remove(a);
-                    Arrays.asList(ar).indexOf(a);
-                    remove(b);
-                    bullets.remove(b);
-                    break;
+                if(a!=null) {
+                    arec = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+                    if (arec.intersects(brec)) {
+                        remove(a);
+                        ar[Arrays.asList(ar).indexOf(a)] = null;
+                        remove(b);
+                        bullets.remove(b);
+                        break;
+                    }
                 }
             }
         }
