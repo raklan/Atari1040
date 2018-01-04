@@ -68,7 +68,7 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
-                            //ExampleWindow window = new ExampleWindow();
+                            ExampleWindow window = new ExampleWindow();
                             dispose();
                         }
                         else if(selLocation == 2){
