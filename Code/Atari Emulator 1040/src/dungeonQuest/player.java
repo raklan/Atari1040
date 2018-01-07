@@ -9,29 +9,15 @@ public class player extends EzImage{
         x = up;
         y = sides;
         shoot = 15;
-        setFocusable(true);
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch(e.getKeyCode()) {
-                    case KeyEvent.VK_DOWN: y+=10;  count +=1; moved(); break;
-                    case KeyEvent.VK_UP: y-=10; count +=1; moved(); break;
-                    case KeyEvent.VK_LEFT: x-=10;count +=1; moved(); break;
-                    case KeyEvent.VK_RIGHT: x+=10;count +=1; moved(); break;
-                    case KeyEvent.VK_SPACE: shoot -= 1;count +=1; shot(); break;
-                }
-
-            }
-        });
         System.out.println(count);
     }
-    public int moved() {
+    public void moved(int count) {
         this.setLocation(x, y);
         tcount += 1;
         if (count == tcount) {
-            count += 1;
+            System.out.println("done");
         }
-        return count;
+
     }
 
 
