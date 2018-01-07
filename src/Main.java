@@ -5,23 +5,21 @@ import menu.Menu;
 import resources.GameRectangle;
 import spacevader.Game;
 import menu.MenuGUI;
-import menu.NewMenu;
+import menu.Menu;
 
 import javax.swing.*;
+import java.awt.Color;
 
 /**
  * Created by Ryan on 12/18/2017.
  */
 public class Main {
-
-
+    
     public static void main(String[]args){
 
-        Game spacegame = new Game();
-        spacegame.requestFocusInWindow();
+        Menu menu = new Menu();
+
     }
-
-
 
 
 
