@@ -19,19 +19,20 @@ public class Menu extends JFrame{
 
     static private Random gen = new Random();
 
-    private JPanel panel;
     private JLabel title;
     private JLabel sel;
     private JLabel option1;
     private JLabel option2;
     private JLabel option3;
     private JLabel exit;
+    private JLabel copyright;
+
     private int selLocation = 1;
 
     public Menu() {
         super("Atari Emulator 1040");
         this.setBounds(0, 0, 1500, 1000);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.BLACK);
         this.setLayout(null);
 
@@ -72,7 +73,7 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
-                            Game space = new Game();
+                            new Game();
                             dispose();
                         }
                         else if(selLocation == 2){
@@ -111,6 +112,15 @@ public class Menu extends JFrame{
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setVisible(true);
         this.add(title);
+
+        copyright = new JLabel("");
+        copyright.setSize(new Dimension(350,100));
+        ImageIcon copyrightImage = new ImageIcon(this.getClass().getResource("/resources/images/Copyright Stuff.png"));
+        copyright.setIcon(copyrightImage);
+        copyright.setLocation(25,875);
+        copyright.setHorizontalAlignment(SwingConstants.LEFT);
+        copyright.setVisible(true);
+        this.add(copyright);
     }
     private void createOptions(){
         option1 = new JLabel("");
