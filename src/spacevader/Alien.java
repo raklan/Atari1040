@@ -10,4 +10,10 @@ public class Alien extends SpaceEntity{
         setBackground(Color.red);
     }
 
+    protected void shift(int u, int s)
+    {
+        x+=s;
+        y+=u;
+        setLocation(x,y);
+    }
 }

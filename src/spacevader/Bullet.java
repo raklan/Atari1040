@@ -17,4 +17,9 @@ public class Bullet extends SpaceEntity{
         else
             dy = 20;
     }
+
+    protected boolean isUp()
+    {
+        return isUp;
+    }
 }
