@@ -3,11 +3,13 @@ import resources.*;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import java.util.Random;
 
-import spacevader.*;
+import spacevader.Game;
 
 /**
  * By Ryan
@@ -112,7 +114,6 @@ public class Menu extends JFrame{
     }
     private void createOptions(){
         option1 = new JLabel("");
-        option1.setForeground(Color.WHITE);
         option1.setSize(new Dimension(400,100));
         option1.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/SpaceInvadersLogoWhite.png")));
         option1.setLocation(550,350);
@@ -120,7 +121,6 @@ public class Menu extends JFrame{
         option1.setVisible(true);
 
         option2 = new JLabel("Jeff's Quest");
-        option2.setForeground(Color.WHITE);
         option2.setSize(new Dimension(400,100));
         option2.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/JeffLogoWhite.png")));
         option2.setLocation(550,450);
@@ -128,7 +128,6 @@ public class Menu extends JFrame{
         option2.setVisible(true);
 
         option3 = new JLabel("");
-        option3.setForeground(Color.WHITE);
         option3.setSize(new Dimension(400,100));
         option3.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/Pong White.png")));
         option3.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
@@ -152,7 +151,6 @@ public class Menu extends JFrame{
 
     private void addSel(){
         sel = new JLabel("");
-        sel.setForeground(Color.WHITE);
         sel.setSize(new Dimension(100,50));
         sel.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/ArrowResizedWhite.png")));
         sel.setLocation(425,375);
