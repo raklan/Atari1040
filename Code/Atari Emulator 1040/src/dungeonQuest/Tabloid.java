@@ -16,6 +16,7 @@ public class Tabloid extends JFrame{
     protected Arrow arrow;
     public Tabloid()
     {
+        super("Picture");
         shoot = 5;
         count = 0;
         fps = 40;
@@ -25,27 +26,26 @@ public class Tabloid extends JFrame{
         startW = 100;
         startH = 100;
         half = startH/2;
-        win =new JFrame("Picture");
-        win.setBounds(0,0,1000,1000);
-        win.setLayout(null);
-        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        win.setVisible(true);
+        this.setBounds(0,0,1000,1000);
+        this.setLayout(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
         //Character not Michael
         jeff = new player(startx, starty, startW,startH, "FarmerMan.png");
-        win.add(jeff,0);
+        this.add(jeff,0);
         jeff.requestFocusInWindow();
-        win.repaint();
+        this.repaint();
         t.schedule(new MyTimerTask(),0,1000/fps);
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch(e.getKeyCode()) {
-                    case KeyEvent.VK_DOWN: y+=10;  count +=1; jeff.moved(count); break;
-                    case KeyEvent.VK_UP: y-=10; count +=1; jeff.moved(count); break;
-                    case KeyEvent.VK_LEFT: x-=10;count +=1; jeff.moved(count); break;
-                    case KeyEvent.VK_RIGHT: x+=10;count +=1; jeff.moved(count); break;
-                    case KeyEvent.VK_SPACE: shoot -= 1; shot(); System.out.println("Sup"); break;
+                    case KeyEvent.VK_DOWN: y+=10;  count +=1; jeff.moved(x, y, count); break;
+                    case KeyEvent.VK_UP: y-=10; count +=1; jeff.moved(x,y, count); break;
+                    case KeyEvent.VK_LEFT: x-=10;count +=1; jeff.moved(x,y,count); break;
+                    case KeyEvent.VK_RIGHT: x+=10;count +=1; jeff.moved(x,y,count); break;
+                    case KeyEvent.VK_SPACE: shoot -= 1; shot(); break;
                 }
             }
         });
@@ -53,14 +53,14 @@ public class Tabloid extends JFrame{
         y = jeff.getY();
         arrow = new Arrow(x + startW,y+half,25,25,"ArrowWithFletching.png");
         arrow.setVisible(true);
-        win.add(arrow,0);
+        this.add(arrow,0);
         goat1 = new Goat(startx + 200, starty, 100, 100,"DerpyGoat1.png" );
-        win.add(goat1,0);
+        this.add(goat1,0);
         goat1.setVisible(true);
     }
     public void shot()
     {
-        win.add(arrow,0);
+        this.add(arrow,0);
         arrow.shoot();
         Rectangle arro = new Rectangle(arrow.getX(),arrow.getY(),arrow.getWidth(),arrow.getHeight());
         Rectangle goatio = new Rectangle(goat1.getX(),goat1.getY(),goat1.getWidth(),goat1.getHeight());
@@ -78,8 +78,7 @@ public class Tabloid extends JFrame{
     public class MyTimerTask extends TimerTask{
         @Override
         public void run(){
-            jeff.moved(count);
-            win.repaint();
+            jeff.moved(x,y,count);
         }
     }
     public static void main (String[]args)
