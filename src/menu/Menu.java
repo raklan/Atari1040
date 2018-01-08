@@ -26,6 +26,7 @@ public class Menu extends JFrame{
     private JLabel option3;
     private JLabel exit;
     private JLabel copyright;
+    private JLabel names;
 
     private int selLocation = 1;
 
@@ -121,6 +122,15 @@ public class Menu extends JFrame{
         copyright.setHorizontalAlignment(SwingConstants.LEFT);
         copyright.setVisible(true);
         this.add(copyright);
+
+        names = new JLabel("");
+        names.setSize(new Dimension(350,100));
+        ImageIcon namesImage = new ImageIcon(this.getClass().getResource("/resources/images/Naems.png"));
+        names.setIcon(namesImage);
+        names.setLocation(1100,875);
+        names.setHorizontalAlignment(SwingConstants.LEFT);
+        names.setVisible(true);
+        this.add(names);
     }
     private void createOptions(){
         option1 = new JLabel("");
