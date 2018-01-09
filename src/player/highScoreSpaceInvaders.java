@@ -4,7 +4,7 @@ import java.io.*;
 
 public class highScoreSpaceInvaders {
 
-    public static int readSpaceInvadersHighScore(){
+    public static void readSpaceInvadersHighScore(){
         int previousScore;
         try {
             //Create an object that opens a file for writing data
@@ -17,17 +17,17 @@ public class highScoreSpaceInvaders {
         }catch(IOException e){
             e.printStackTrace();
         }
-        return previousScore;
+        //return previousScore;
     }
 
     public void writeHighScoreSpaceInvaders(int n){
+        int previousScore;
         try{
-            int previousScore;
             //Create an object that opens a file for writing data
             //FileOutputStream fileOut = new FileOutputStream("info.txt");
             //Create a stream object that connects to the file
             DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("highScoreSpaceInvaders.txt"));
-            if(n>previousScore){
+            if(n>0){//this is where previous score is gonna go
                 dataOut.writeInt(n);
                 dataOut.close();
             }
