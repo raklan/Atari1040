@@ -65,7 +65,7 @@ public class NewMenu extends JFrame {
 
     private void SetMenuItems(){
         menuItem1.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
-        menuItem1.setText("Game Option #1");
+        menuItem1.setText("SpaceGame Option #1");
         menuItem1.setForeground(Color.white);
         menuItem1.setSize(400,100);
         menuItem1.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -74,7 +74,7 @@ public class NewMenu extends JFrame {
         menuItem1.setVerticalAlignment(SwingConstants.TOP);
 
         menuItem2.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
-        menuItem2.setText("Game Option #2");
+        menuItem2.setText("SpaceGame Option #2");
         menuItem2.setForeground(Color.white);
         menuItem2.setSize(new Dimension(400,100));
         menuItem2.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -83,7 +83,7 @@ public class NewMenu extends JFrame {
         menuItem2.setVerticalAlignment(SwingConstants.CENTER);
 
         menuItem3.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
-        menuItem3.setText("Game Option #3");
+        menuItem3.setText("SpaceGame Option #3");
         menuItem3.setForeground(Color.white);
         contentPane.add(menuItem3, SwingConstants.CENTER);
     }

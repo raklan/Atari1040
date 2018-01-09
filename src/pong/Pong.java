@@ -22,8 +22,8 @@ public class Pong extends GameOval
         height2=h2;
         width=w;
         height=h;
-        speedY=10;
-        speedX=10;
+        speedY=7;
+        speedX=7;
     }
     
     public void move()
@@ -39,5 +39,36 @@ public class Pong extends GameOval
         {
             speedY*=-1;
         }
+
+    }
+    public int left() {
+        return getX();
+    }
+
+    public int right() {
+        return getX() + width;
+    }
+
+    public int top() {
+        return getY();
+    }
+
+    public int bottom() {
+        return getY() + height;
+    }
+    public void changeSpeedD(){speedX*=-1;}
+    public boolean checkX()
+    {
+        if(this.getX()<5) {
+            return true;
+        }
+        else
+            return false;
+
+    }
+    public void reset()
+    {
+        this.setLocation(250,125);
     }
 }
+
