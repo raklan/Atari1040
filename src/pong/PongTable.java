@@ -10,7 +10,7 @@ import resources.GameRectangle;
 
 /**
  * 
- * 
+ *
  * 
  *
  * @author (your name)
@@ -45,8 +45,7 @@ private boolean down;
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP:
                         up=true;
-                        if (up != false
-                                ) {
+                        if (up != false) {
 
 
                             paddle.moveUP();
