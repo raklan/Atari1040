@@ -6,9 +6,11 @@ public class Arrow extends EzImage{
         x = sides;
         y = height;
 }
-    public void shoot(int x)
+    public int shoot(int x)
     {
             this.setLocation(x,this.getY());
+            x += 10;
+            return x;
 
     }
 }

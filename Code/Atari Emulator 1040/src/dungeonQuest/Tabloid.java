@@ -11,7 +11,7 @@ public class Tabloid extends JFrame{
     protected  Timer t = new Timer();
     protected  JFrame win;
     protected Goat goat1;
-    protected boolean miss, dead = false;
+    protected boolean collision, dead = false;
     protected Arrow arrow;
     protected Rectangle arrRec, goatRec;
     public Tabloid()
@@ -44,7 +44,7 @@ public class Tabloid extends JFrame{
                     case KeyEvent.VK_UP: y-=10; count +=1; jeff.moved(x,y, count); break;
                     case KeyEvent.VK_LEFT: x-=10;count +=1; jeff.moved(x,y,count); break;
                     case KeyEvent.VK_RIGHT: x+=10;count +=1; jeff.moved(x,y,count); break;
-                    case KeyEvent.VK_SPACE: shoot -= 1; shot(); break;
+                    case KeyEvent.VK_SPACE: shoot -= 1; shot(jeff.getX()); break;
                 }
             }
         });
@@ -53,16 +53,24 @@ public class Tabloid extends JFrame{
         goat1.setVisible(true);
 
     }
-    public void shot(int x) {
+    private void shot(int x) {
         arrowStart = jeff.getX();
         arrow = new Arrow(arrowStart, jeff.getY(),jeff.getWidth(), jeff.getHeight(), "ArrowWithFletching.png");
+        win.add(arrow,0);
         arrRec = new Rectangle(arrow.getX(), arrow.getY(), arrow.getWidth(), arrow.getHeight());
-        goatRec = new Rectangle(goat1.getX(),goat1.getY(), goat1.getWidth(),goat1.getHeight())
-
-
+        goatRec = new Rectangle(goat1.getX(),goat1.getY(), goat1.getWidth(),goat1.getHeight());
         do {
-            arrow.shoot(x);
-        }
+            x = arrow.shoot(x);
+            if (arrRec.intersects(goatRec)) {
+                remove(goat1);
+                collision = true;
+            }
+            if (arrRec.getX() >= 2000)
+            {
+                remove(arrow);
+                collision = true;
+             }
+        }while(collision != true);
     }
     public class MyTimerTask extends TimerTask{
         @Override
