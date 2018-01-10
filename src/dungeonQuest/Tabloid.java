@@ -1,13 +1,16 @@
 package dungeonQuest;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.awt.Rectangle;
-//import resources.dungeon.*;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import resources.*;
 public class Tabloid extends JFrame{
 
     private JLabel player;
@@ -60,6 +63,8 @@ public class Tabloid extends JFrame{
         this.add(goat1,0);
         goat1.setVisible(true);
 
+        addPlayer();
+
     }
     private void shot(int x) {
         arrowStart = jeff.getX();
@@ -68,7 +73,7 @@ public class Tabloid extends JFrame{
         arrRec = new Rectangle(arrow.getX(), arrow.getY(), arrow.getWidth(), arrow.getHeight());
         goatRec = new Rectangle(goat1.getX(),goat1.getY(), goat1.getWidth(),goat1.getHeight());
         do {
-            x = arrow.shoot(x);
+
             if (arrRec.intersects(goatRec)) {
                 remove(goat1);
                 collision = true;
@@ -91,14 +96,18 @@ public class Tabloid extends JFrame{
 
         player = new JLabel("");
         player.setLocation(0,0);
-        player.setIcon(new ImageIcon(this.getClass().getResource("resources/dungeon/FarmerMan.png")));
+        player.setSize(new Dimension(100,100));
+        ImageIcon theImage = new ImageIcon(this.getClass().getResource("/resources/dungeon/FarmerMan.png"));
+        player.setIcon(theImage);
         player.setVisible(true);
+        player.setHorizontalAlignment(SwingConstants.CENTER);
         
         this.add(player);
 
     }
     public static void main (String[]args)
     {
-        Tabloid jef = new Tabloid();
+        //Tabloid jef = new Tabloid();
+        new NewTabloid();
     }
 }
