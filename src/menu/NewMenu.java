@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+import static javax.swing.SwingConstants.TOP;
+
 public class NewMenu extends JFrame {
 
     JPanel contentPane;
@@ -56,10 +58,10 @@ public class NewMenu extends JFrame {
         //this will resize the image, but it breaks the animation
 //            BufferedImage bi = ImageIO.read(getClass().getResource("/resources/images/AtariRainbow.gif"));
 //            ImageIcon titleImage = new ImageIcon(bi.getScaledInstance(250, 100, Image.SCALE_SMOOTH));
-        ImageIcon titleImage = new ImageIcon(this.getClass().getResource("/resources/images/AtariRainbowResized.gif"));
+        ImageIcon titleImage = new ImageIcon(this.getClass().getResource("/resources/images/LogoMovedGif.gif"));
         imageLabel.setIcon(titleImage);
 
-        contentPane.add(imageLabel, SwingConstants.TOP);
+        contentPane.add(imageLabel, TOP);
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
@@ -71,7 +73,7 @@ public class NewMenu extends JFrame {
         menuItem1.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         contentPane.add(menuItem1, SwingConstants.CENTER);
         menuItem1.setHorizontalAlignment(SwingConstants.CENTER);
-        menuItem1.setVerticalAlignment(SwingConstants.TOP);
+        menuItem1.setVerticalAlignment(TOP);
 
         menuItem2.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         menuItem2.setText("SpaceGame Option #2");
