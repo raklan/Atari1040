@@ -1,9 +1,13 @@
 package menu;
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class NewMenu extends JFrame {
 
@@ -47,20 +51,27 @@ public class NewMenu extends JFrame {
         // add the header label
 
         headerLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-        headerLabel.setText("Choose the game you wsh to play!");
+        headerLabel.setText("Choose the game you wish to play!");
         headerLabel.setForeground(Color.white);
         contentPane.add(headerLabel);
     }
 
-    private void SetTitleImage() {
+    private void SetTitleImage() throws MalformedURLException {
         //this will resize the image, but it breaks the animation
-//            BufferedImage bi = ImageIO.read(getClass().getResource("/resources/images/AtariRainbow.gif"));
+//            BufferedImage bi = ImageIO.read(getClass().getResource("/Desktop/LogoMovedGif.gif"));
 //            ImageIcon titleImage = new ImageIcon(bi.getScaledInstance(250, 100, Image.SCALE_SMOOTH));
-        ImageIcon titleImage = new ImageIcon(this.getClass().getResource("/resources/images/AtariRainbowResized.gif"));
-        imageLabel.setIcon(titleImage);
+        URL url = new URL("/resources/images/LogoSlow.gif");
+        Icon titleImage = new ImageIcon(url);
+        JLabel label = new JLabel(titleImage);
 
-        contentPane.add(imageLabel, SwingConstants.TOP);
-        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        JFrame f = new JFrame("Animation");
+        f.getContentPane().add(label);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.pack();
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+        //contentPane.add(imageLabel, SwingConstants.TOP);
+        //imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     private void SetMenuItems(){
