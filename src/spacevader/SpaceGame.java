@@ -240,7 +240,7 @@ public class SpaceGame extends JFrame{
     {
         t.cancel();
         try {
-            Thread.sleep(250);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
