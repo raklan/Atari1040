@@ -8,7 +8,7 @@ public class Goat extends JLabel{
     {
         super("");
         setBounds(x, y, w, h);
-        setSize(new Dimension(w, h));
+        setSize(new Dimension(w,h));
         setIcon(new ImageIcon(this.getClass().getResource(i)));
     }
 }

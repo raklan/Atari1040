@@ -1,5 +1,6 @@
 package dungeonQuest;
 
+import com.sun.codemodel.internal.JOp;
 import javafx.embed.swing.JFXPanel;
 import resources.GameRectangle;
 import spacevader.SpaceGame;
@@ -24,7 +25,7 @@ public class Tabloid extends JFrame {
     private Arrow arrow;
     private Grid grid;
 
-    private int shoot, amount, eAmount, dead;
+    private int shoot, amount, eAmount, dead, ex1, ex2, ex3, why1, why2, why3;
 
     private Rectangle arec, grec, prec, crec, rec, herorec;
 
@@ -42,7 +43,12 @@ public class Tabloid extends JFrame {
 
     public Tabloid() {
         super("Jeff's Quest");
-        Random num = num.nextInt(900);
+        ex1 = gen.nextInt(900);
+        ex2 = gen.nextInt(900);
+        ex3 = gen.nextInt(900);
+        why1 = gen.nextInt(900);
+        why2 = gen.nextInt(900);
+        why3 = gen.nextInt(900);
         this.setBounds(0, 0, 1500, 1000);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.WHITE);
@@ -52,9 +58,9 @@ public class Tabloid extends JFrame {
 //        System.out.println(arrows);
 //        t.schedule(new Tabloid.MyTimerTask(),0,1000/fps);
         this.createcharacter();
-        this.addGoat();
-        this.addPig();
-        this.addChicken();
+        this.addGoat(ex1, why1);
+        this.addPig(ex2, why2);
+        this.addChicken(ex3, why3);
         this.addGrid();
         this.createGoat();
         this.createChicken();
@@ -101,10 +107,16 @@ public class Tabloid extends JFrame {
         character.setVisible(true);
         this.add(character);
     }
-    private void addGoat(){
-        double ex = gen.nextDouble(900);
-        ex = Math.floor(ex) * 5;
-        goaty = new Goat(ex, character.getY()-50, 200, 200, "/resources/dungeon/DerpyGoat1.png");
+    private void addGoat(int ex, int why){
+        if(ex + 100 < character.getX() && ex -100 > character.getX())
+        {
+            ex += 100;
+        }
+        if(why + 100 < character.getY() && why - 100 > character.getY())
+        {
+            why +=100;
+        }
+        goaty = new Goat(ex, why, 200, 200, "/resources/dungeon/DerpyGoat1.png");
         goaty.setVisible(true);
         this.add(goaty,0);
     }
@@ -112,10 +124,16 @@ public class Tabloid extends JFrame {
         grec = new Rectangle(goaty.getX(),goaty.getY(),goaty.getWidth(), goaty.getHeight());
         return grec;
     }
-    private Pig addPig() {
-        double ex = gen.nextDouble(900);
-        ex = Math.floor(ex) * 5;
-        piggy = new Pig(550, character.getY()+550, 200, 200, "/resources/dungeon/Pig2.png");
+    private Pig addPig(int ex, int why) {
+        if(ex + 100 < character.getX() && ex -100 > character.getX())
+        {
+            ex += 100;
+        }
+        if(why + 100 < character.getY() && why - 100 > character.getY())
+        {
+            why +=100;
+        }
+        piggy = new Pig(ex, why, 200, 200, "/resources/dungeon/Pig2.png");
         piggy.setVisible(true);
         this.add(piggy, 0);
         return piggy;
@@ -124,10 +142,16 @@ public class Tabloid extends JFrame {
         prec = new Rectangle(piggy.getX(), piggy.getY(), piggy.getWidth(), piggy.getHeight());
         return prec;
     }
-    private Chicken addChicken() {
-        double ex = gen.nextDouble();
-        ex = Math.floor(ex) * 5;
-        chicky = new Chicken(character.getX()  + 280, 870, 150, 150, "/resources/dungeon/Chicken.png");
+    private Chicken addChicken(int ex, int why) {
+        if(ex + 100 < character.getX() && ex -100 > character.getX())
+        {
+            ex += 100;
+        }
+        if(why + 100 < character.getY() && why - 100 > character.getY())
+        {
+            why +=100;
+        }
+        chicky = new Chicken(ex, why, 150, 150, "/resources/dungeon/Chicken.png");
         chicky.setVisible(true);
         this.add(chicky, 0);
         return chicky;
@@ -291,10 +315,12 @@ public class Tabloid extends JFrame {
         if(newHigh)
         {
             high.writeJEFFInvaders(amount);
+            JOptionPane.showMessageDialog(null, "New High Score Of: " + amount);
         }
-        int pane = JOptionPane.showOptionDialog(null,
-
-                "Game Over!\nScore: "+amount+ "\n" + ((newHigh)? "New high score!" : ("High score: "+ high.readJEFFHighScore())));
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Your Score was " + amount);
+        }
 
     }
 
