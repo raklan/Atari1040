@@ -1,4 +1,5 @@
 package menu;
+import dungeonQuest.Tabloid;
 import resources.*;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ import spacevader.SpaceGame;
 import pong.PongTable;
 
 /**
- * By Ryan The Babe
+ * By Ryan
  */
 
 public class Menu extends JFrame{
@@ -75,17 +76,18 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
-                            SpaceGame space = new SpaceGame();
-                           
+                            new SpaceGame();
+                            dispose();
                         }
                         else if(selLocation == 2){
                             //Instantiate Jeff's Quest Object
+                            new Tabloid();
                             dispose();
                         }
                         else if(selLocation == 3){
                             //Instantiate Pong Object
-                            PongTable pong=new PongTable();
-
+                            new PongTable();
+                            dispose();
                         }
                         else if(selLocation == 4){
                             dispose();
