@@ -1,7 +1,5 @@
 package menu;
 
-import pong.myJoke;
-
 import dungeonQuest.Tabloid;
 
 import resources.*;
