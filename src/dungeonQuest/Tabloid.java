@@ -1,6 +1,6 @@
 package dungeonQuest;
 
-import com.sun.codemodel.internal.JOp;
+
 import javafx.embed.swing.JFXPanel;
 import resources.GameRectangle;
 import spacevader.SpaceGame;
