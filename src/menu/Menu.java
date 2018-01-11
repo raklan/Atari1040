@@ -1,7 +1,5 @@
 package menu;
 
-import pong.myJoke;
-
 import dungeonQuest.Tabloid;
 
 import resources.*;
@@ -80,9 +78,6 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
-
-                            SpaceGame space = new SpaceGame();
-
 
                             new SpaceGame();
                             dispose();

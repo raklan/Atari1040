@@ -1,5 +1,6 @@
 package dungeonQuest;
 
+
 import javafx.embed.swing.JFXPanel;
 import resources.GameRectangle;
 import spacevader.SpaceGame;
@@ -19,12 +20,12 @@ import static java.lang.Math.abs;
 public class Tabloid extends JFrame {
 
     static private Random gen = new Random();
-    
+
     private JLabel character;
     private Arrow arrow;
     private Grid grid;
 
-    private int shoot, amount, eAmount, dead;
+    private int shoot, amount, eAmount, dead, ex1, ex2, ex3, why1, why2, why3;
 
     private Rectangle arec, grec, prec, crec, rec, herorec;
 
@@ -33,30 +34,39 @@ public class Tabloid extends JFrame {
     private Chicken chicky;
 
 
-    private ArrayList<Arrow> arrows = new ArrayList<Arrow>();
+    private ArrayList<Arrow> arrows;
 
-    private java.util.Timer t = new Timer();
+    private Timer t;
     private int fps = 40;
 
     private int arrowLocation = 1;
 
     public Tabloid() {
         super("Jeff's Quest");
+        ex1 = gen.nextInt(900);
+        ex2 = gen.nextInt(900);
+        ex3 = gen.nextInt(900);
+        why1 = gen.nextInt(900);
+        why2 = gen.nextInt(900);
+        why3 = gen.nextInt(900);
         this.setBounds(0, 0, 1500, 1000);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.WHITE);
         this.setLayout(null);
-
-        t.schedule(new Tabloid.MyTimerTask(),0,1000/fps);
+        arrows = new ArrayList<>();
+//        t = new Timer();
+//        System.out.println(arrows);
+//        t.schedule(new Tabloid.MyTimerTask(),0,1000/fps);
         this.createcharacter();
-        this.addGoat();
-        this.addPig();
-        this.addChicken();
+        this.addGoat(ex1, why1);
+        this.addPig(ex2, why2);
+        this.addChicken(ex3, why3);
         this.addGrid();
-
+        this.createGoat();
+        this.createChicken();
+        this.createPig();
+        herorec = new Rectangle(character.getX(), character.getY(),100, 100);
         eAmount = 0;
-
-        herorec = new Rectangle(character.getX(), character.getY(), character.getWidth(), character.getHeight());
         grec = enemy("Goat");
         prec = enemy("Pig");
         crec = enemy("Chicken");
@@ -64,17 +74,27 @@ public class Tabloid extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch(e.getKeyCode()) {
-                    case KeyEvent.VK_DOWN: amount += 1; ai(amount, eAmount); eAmount += 1; character.setLocation(character.getX(),character.getY()+100); checkCollision(); break;
-                    case KeyEvent.VK_UP: amount += 1; ai(amount, eAmount); eAmount += 1; character.setLocation(character.getX(),character.getY()-100); checkCollision(); break;
-                    case KeyEvent.VK_LEFT: amount += 1; ai(amount, eAmount); eAmount += 1; character.setLocation(character.getX()-100,character.getY()); checkCollision(); break;
-                    case KeyEvent.VK_RIGHT: amount += 1; ai(amount, eAmount); eAmount += 1; character.setLocation(character.getX()+100,character.getY()); checkCollision(); break;
-                    case KeyEvent.VK_SPACE: shoot += 1; amount +=1; ai(amount, eAmount); eAmount += 1; arrows.add(addArrow()); shootArrow(); break;
+                    case KeyEvent.VK_DOWN: amount += 1;  character.setLocation(character.getX(),character.getY()+100); herorec.setLocation(character.getX(),character.getY()+100); ai(amount, eAmount); eAmount += 1; keepInBounds(); checkCollision(); break;
+                    case KeyEvent.VK_UP: amount += 1; character.setLocation(character.getX(),character.getY()-100);herorec.setLocation(character.getX(),character.getY()-100); ai(amount, eAmount); eAmount += 1; keepInBounds();  checkCollision(); break;
+                    case KeyEvent.VK_LEFT: amount += 1;  character.setLocation(character.getX()-100,character.getY()); herorec.setLocation(character.getX()-100,character.getY()); ai(amount, eAmount); eAmount += 1; keepInBounds(); checkCollision(); break;
+                    case KeyEvent.VK_RIGHT: amount += 1; character.setLocation(character.getX()+100,character.getY());herorec.setLocation(character.getX()+100,character.getY()); ai(amount, eAmount); eAmount += 1; keepInBounds(); checkCollision(); break;
+//                    case KeyEvent.VK_SPACE: shoot += 1; amount +=1; ai(amount, eAmount); eAmount += 1; addArrow(); arrows.add(arrow); shootArrow(); break;
                 }
             }
         });
 
         this.setVisible(true);
 
+    }
+    private void keepInBounds(){
+        if(character.getX()<0)
+        {
+            character.setLocation(50, character.getY());
+        }
+        if (character.getY()<0)
+        {
+            character.setLocation(character.getX(), 15);
+        }
     }
 
     private void createcharacter(){
@@ -87,8 +107,16 @@ public class Tabloid extends JFrame {
         character.setVisible(true);
         this.add(character);
     }
-    private void addGoat(){
-        goaty = new Goat(character.getX() + 200, character.getY()-50, 200, 200, "/resources/dungeon/DerpyGoat1.png");
+    private void addGoat(int ex, int why){
+        if(ex + 100 < character.getX() && ex -100 > character.getX())
+        {
+            ex += 100;
+        }
+        if(why + 100 < character.getY() && why - 100 > character.getY())
+        {
+            why +=100;
+        }
+        goaty = new Goat(ex, why, 200, 200, "/resources/dungeon/DerpyGoat1.png");
         goaty.setVisible(true);
         this.add(goaty,0);
     }
@@ -96,8 +124,16 @@ public class Tabloid extends JFrame {
         grec = new Rectangle(goaty.getX(),goaty.getY(),goaty.getWidth(), goaty.getHeight());
         return grec;
     }
-    private Pig addPig() {
-        piggy = new Pig(500, character.getY()+550, 200, 200, "/resources/dungeon/Pig2.png");
+    private Pig addPig(int ex, int why) {
+        if(ex + 100 < character.getX() && ex -100 > character.getX())
+        {
+            ex += 100;
+        }
+        if(why + 100 < character.getY() && why - 100 > character.getY())
+        {
+            why +=100;
+        }
+        piggy = new Pig(ex, why, 200, 200, "/resources/dungeon/Pig2.png");
         piggy.setVisible(true);
         this.add(piggy, 0);
         return piggy;
@@ -106,8 +142,16 @@ public class Tabloid extends JFrame {
         prec = new Rectangle(piggy.getX(), piggy.getY(), piggy.getWidth(), piggy.getHeight());
         return prec;
     }
-    private Chicken addChicken() {
-        chicky = new Chicken(character.getX(), 1200, 150, 150, "/resources/dungeon/Chicken.png");
+    private Chicken addChicken(int ex, int why) {
+        if(ex + 100 < character.getX() && ex -100 > character.getX())
+        {
+            ex += 100;
+        }
+        if(why + 100 < character.getY() && why - 100 > character.getY())
+        {
+            why +=100;
+        }
+        chicky = new Chicken(ex, why, 150, 150, "/resources/dungeon/Chicken.png");
         chicky.setVisible(true);
         this.add(chicky, 0);
         return chicky;
@@ -126,91 +170,72 @@ public class Tabloid extends JFrame {
                 rec = createPig();
                 break;
             case "Chicken":
-
+                rec = createChicken();
                 break;
         }
         return rec;
     }
-    private void ai(int amount, int eAmount){
-        if(amount != eAmount){
-            if(abs(goaty.getX() - character.getX()) > abs(goaty.getY() - character.getY()))
-            {
-                if (character.getX() - goaty.getX() > 0){
-                    goaty.setLocation(goaty.getX() + 100, goaty.getY() );
-                }
-                else if(character.getX() - goaty.getX() < 0){
+    private void ai(int amount, int eAmount) {
+        if (amount != eAmount) {
+            if (abs(goaty.getX() - character.getX()) > abs(goaty.getY() - character.getY())) {
+                if (character.getX() - goaty.getX() > 0) {
+                    goaty.setLocation(goaty.getX() + 100, goaty.getY());
+                    grec.setLocation(goaty.getX() + 100, goaty.getY());
+                } else if (character.getX() - goaty.getX() < 0) {
                     goaty.setLocation(goaty.getX() - 100, goaty.getY());
-                }
-                else{
+                    grec.setLocation(goaty.getX() - 100, goaty.getY());
+                } else {
                     System.out.println("Error");
                 }
-            }
-            else if(abs(goaty.getX() - character.getX()) < abs(goaty.getY() - character.getY())){
-                if (character.getY() - goaty.getY() > 0){
+            } else if (abs(goaty.getX() - character.getX()) < abs(goaty.getY() - character.getY())) {
+                if (character.getY() - goaty.getY() > 0) {
                     goaty.setLocation(goaty.getX(), goaty.getY() + 100);
-                }
-                else if(character.getY() - goaty.getY() < 0){
-                    goaty.setLocation(goaty.getX(), goaty.getY()- 100);
-                }
-                else{
+                    grec.setLocation(goaty.getX(), goaty.getY() + 100);
+                } else if (character.getY() - goaty.getY() < 0) {
+                    goaty.setLocation(goaty.getX(), goaty.getY() - 100);
+                    grec.setLocation(goaty.getX(), goaty.getY() - 100);
+                } else {
                     System.out.println("Error");
                 }
             }
-            else{
-                System.out.println("Error");
+            if (abs(piggy.getX() - character.getX()) > abs(piggy.getY() - character.getY())) {
+                if (character.getX() - piggy.getX() > 0) {
+                    piggy.setLocation(piggy.getX() + 100, piggy.getY());
+                    prec.setLocation(piggy.getX() + 100, piggy.getY());
+                } else if (character.getX() - piggy.getX() < 0) {
+                    piggy.setLocation(piggy.getX() - 100, piggy.getY());
+                    prec.setLocation(piggy.getX() - 100, piggy.getY());
+                } else {
+                    System.out.println("Error");
+                }
+            } else if (abs(piggy.getX() - character.getX()) < abs(piggy.getY() - character.getY())) {
+                if (character.getY() - piggy.getY() > 0) {
+                    piggy.setLocation(piggy.getX(), piggy.getY() + 100);
+                    prec.setLocation(piggy.getX(), piggy.getY() + 100);
+                } else if (character.getY() - piggy.getY() < 0) {
+                    piggy.setLocation(piggy.getX(), piggy.getY() - 100);
+                    prec.setLocation(piggy.getX(), piggy.getY() - 100);
+                }
             }
-        }
-        if(abs(piggy.getX() - character.getX()) > abs(piggy.getY() - character.getY()))
-        {
-            if (character.getX() - piggy.getX() > 0){
-                piggy.setLocation(piggy.getX() + 100, piggy.getY() );
+            if (abs(chicky.getX() - character.getX()) > abs(chicky.getY() - character.getY())) {
+                if (character.getX() - chicky.getX() > 0) {
+                    chicky.setLocation(chicky.getX() + 100, chicky.getY());
+                    crec.setLocation(chicky.getX() + 100, chicky.getY());
+                } else if (character.getX() - chicky.getX() < 0) {
+                    chicky.setLocation(chicky.getX() - 100, chicky.getY());
+                    crec.setLocation(chicky.getX() - 100, chicky.getY());
+                } else {
+                    System.out.println("Error");
+                }
+            } else if (abs(chicky.getX() - character.getX()) < abs(chicky.getY() - character.getY())) {
+                if (character.getY() - chicky.getY() > 0) {
+                    chicky.setLocation(chicky.getX(), chicky.getY() + 100);
+                    crec.setLocation(chicky.getX(), chicky.getY() + 100);
+                } else if (character.getY() - chicky.getY() < 0) {
+                    chicky.setLocation(chicky.getX(), chicky.getY() - 100);
+                    crec.setLocation(chicky.getX(), chicky.getY() - 100);
+                }
             }
-            else if(character.getX() - piggy.getX() < 0){
-                piggy.setLocation(piggy.getX() - 100, piggy.getY());
-            }
-            else{
-                System.out.println("Error");
-            }
-        }
-        else if(abs(piggy.getX() - character.getX()) < abs(piggy.getY() - character.getY())){
-            if (character.getY() - piggy.getY() > 0){
-                piggy.setLocation(piggy.getX(), piggy.getY() + 100);
-            }
-            else if(character.getY() - piggy.getY() < 0){
-                piggy.setLocation(piggy.getX(), piggy.getY()- 100);
-            }
-            else{
-                System.out.println("Error");
-            }
-        }
-        else{
-            System.out.println("Error");
-        }
-        if(abs(chicky.getX() - character.getX()) > abs(chicky.getY() - character.getY()))
-        {
-            if (character.getX() - chicky.getX() > 0){
-                chicky.setLocation(chicky.getX() + 100, chicky.getY() );
-            }
-            else if(character.getX() - chicky.getX() < 0){
-                chicky.setLocation(chicky.getX() - 100, chicky.getY());
-            }
-            else{
-                System.out.println("Error");
-            }
-        }
-        else if(abs(chicky.getX() - character.getX()) < abs(chicky.getY() - character.getY())){
-            if (character.getY() - chicky.getY() > 0){
-                chicky.setLocation(chicky.getX(), chicky.getY() + 100);
-            }
-            else if(character.getY() - chicky.getY() < 0){
-                chicky.setLocation(chicky.getX(), chicky.getY()- 100);
-            }
-            else{
-                System.out.println("Error");
-            }
-        }
-        else{
-            System.out.println("Error");
         }
     }
 
@@ -233,14 +258,15 @@ public class Tabloid extends JFrame {
     }
     private void shootArrow() {
         for (Arrow a : arrows) {
+            arec = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
             if (a.getCount() >= 1000) {
                 a.setVisible(false);
                 arrows.remove(a);
             } else {
-                arec = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
                 while (a.getCount() < 1000) {
                     a.setLocation(a.getX() + 1, a.getY());
                     a.setCount(a.getCount() + 1);
+                    arec.setLocation(a.getX(), a.getY());
                     if (arec.intersects(grec)) {
                         remove(goaty);
                         dead += 1;
@@ -260,33 +286,57 @@ public class Tabloid extends JFrame {
     }
     private void checkCollision()
     {
-            if(grec.intersects(herorec))
-                {
-                    dispose();
-                }
-            else if(prec.intersects(herorec))
-                {
-                    dispose();
-                }
-            else if (crec.intersects(herorec))
-                {
-                    dispose();
-                }
-            }
 
-    public void act(){
-        shootArrow();
-        checkCollision();
-    }
+        if(grec.intersects(herorec))
+        {
+            System.out.println("Hello");
+            dispose();
+            System.out.println("It took " + amount + " moves for the animals to get you");
+            HighScore();
+        }
+        else if(prec.intersects(herorec))
+        {
+            dispose();
+            System.out.println("It took " + amount + " moves for the animals to get you");
+            HighScore();
+        }
+        else if (crec.intersects(herorec))
+        {
+            dispose();
+            System.out.println("It took " + amount + " moves for the animals to get you");
+            HighScore();
 
-    public class MyTimerTask extends TimerTask {
-        @Override
-        public void run(){
-            act();
         }
     }
+    public void HighScore()
+    {
+        player.highScoreJEFF high = new player.highScoreJEFF();
+        boolean newHigh = high.readJEFFHighScore()<=amount;
+        if(newHigh)
+        {
+            high.writeJEFFInvaders(amount);
+            JOptionPane.showMessageDialog(null, "New High Score Of: " + amount);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Your Score was " + amount);
+        }
+
+    }
+
+    //    public void act(){
+//        shootArrow();
+//        checkCollision();
+//    }
+//
+//    public class MyTimerTask extends TimerTask {
+//        @Override
+//        public void run(){
+//            act();
+//        }
+//    }
     public static void main(String[]args){
-        new Tabloid();
+        new dungeonQuest.Tabloid();
     }
 
 }
