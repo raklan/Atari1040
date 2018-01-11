@@ -9,9 +9,9 @@ import java.awt.*;
 import resources.*;
 
 /**
- * 
  *
- * 
+ *
+ *
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -22,11 +22,11 @@ public class PongTable extends JFrame {
     private Pong ball;
     private Paddle paddle;
     private int counter=0;
-private boolean up;
-private boolean down;
-private JLabel J;
+    private boolean up;
+    private boolean down;
+    private JLabel J;
 
-private JLabel pongImage;
+    private JLabel pongImage;
 
     public PongTable() {
         super();
@@ -34,7 +34,7 @@ private JLabel pongImage;
         down=false;
         this.getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBounds(700, 700, 700, 700);
+        this.setBounds(500, 200, 700, 700);
         GameRectangle table = new GameRectangle(100, 100, 500, 250);
         GameRectangle rec=new GameRectangle(0,0,700,700);
         rec.setBackground(Color.BLACK);
@@ -71,18 +71,14 @@ private JLabel pongImage;
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP:
                         up=true;
-<<<<<<< HEAD
-                        if (up != false) {
-=======
                         if (!up
                                 ) {
->>>>>>> 59eabc884465dbe730652e14a5c9502f74f57b5c
 
 
                             paddle.moveUP();
                             //code for moving paddle up
                         }
-                            break;
+                        break;
 
                     case KeyEvent.VK_DOWN:
                         down=true;
@@ -91,6 +87,11 @@ private JLabel pongImage;
                         }
                         //code for moving paddle down
                         break;
+
+                    case KeyEvent.VK_ESCAPE:
+                    {
+                        dispose();
+                    }
                 }
             }
             @Override
@@ -131,9 +132,9 @@ private JLabel pongImage;
                 paddle.reset();
                 ball.reset();
                 counter=0;
-                }
             }
         }
+    }
 
 
     public void collide()

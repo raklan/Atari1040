@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 import spacevader.SpaceGame;
+import pong.PongTable;
 
 /**
  * By Ryan The Babe
@@ -75,7 +76,7 @@ public class Menu extends JFrame{
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
                             SpaceGame space = new SpaceGame();
-                            dispose();
+                           
                         }
                         else if(selLocation == 2){
                             //Instantiate Jeff's Quest Object
@@ -83,7 +84,8 @@ public class Menu extends JFrame{
                         }
                         else if(selLocation == 3){
                             //Instantiate Pong Object
-                            dispose();
+                            PongTable pong=new PongTable();
+
                         }
                         else if(selLocation == 4){
                             dispose();
