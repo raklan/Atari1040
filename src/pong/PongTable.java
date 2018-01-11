@@ -7,14 +7,10 @@ import java.util.TimerTask;
 import java.awt.event.*;
 import java.awt.*;
 import resources.*;
+import menu.Menu;
 
 /**
- *
- *
- *
- *
- * @author (your name)
- * @version (a version number or a date)
+ *  Made By Garrett
  */
 public class PongTable extends JFrame {
     private int fps = 50;
@@ -114,6 +110,7 @@ public class PongTable extends JFrame {
 
                     case KeyEvent.VK_ESCAPE:
                     {
+                        new Menu();
                         dispose();
                     }
                 }
@@ -195,9 +192,4 @@ public class PongTable extends JFrame {
             counter++;
         }
     }
-
-    public static void main(String[] args) {
-        PongTable thing=new PongTable();
-    }
-
 }

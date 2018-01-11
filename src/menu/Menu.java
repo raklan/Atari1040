@@ -1,5 +1,9 @@
 package menu;
+<<<<<<< HEAD
 import pong.myJoke;
+=======
+import dungeonQuest.Tabloid;
+>>>>>>> ff26489fbbcada0cccc5dc43af7ff5983a8c88da
 import resources.*;
 
 import javax.swing.*;
@@ -14,7 +18,7 @@ import spacevader.SpaceGame;
 import pong.PongTable;
 
 /**
- * By Ryan The Babe
+ * By Ryan
  */
 
 public class Menu extends JFrame{
@@ -76,17 +80,27 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
+<<<<<<< HEAD
                             SpaceGame space = new SpaceGame();
 
+=======
+                            new SpaceGame();
+                            dispose();
+>>>>>>> ff26489fbbcada0cccc5dc43af7ff5983a8c88da
                         }
                         else if(selLocation == 2){
                             myJoke joke=new myJoke();
                             //Instantiate Jeff's Quest Object
+<<<<<<< HEAD
+=======
+                            new Tabloid();
+                            dispose();
+>>>>>>> ff26489fbbcada0cccc5dc43af7ff5983a8c88da
                         }
                         else if(selLocation == 3){
                             //Instantiate Pong Object
-                            PongTable pong=new PongTable();
-
+                            new PongTable();
+                            dispose();
                         }
                         else if(selLocation == 4){
                             dispose();

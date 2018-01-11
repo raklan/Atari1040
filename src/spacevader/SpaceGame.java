@@ -1,6 +1,7 @@
 package spacevader;
 import player.highScoreSpaceInvaders;
 import resources.GameRectangle;
+import menu.Menu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +9,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.*;
 import java.util.Timer;
+
+/**
+ * Created By Sean
+ */
 
 public class SpaceGame extends JFrame{
 
@@ -282,6 +287,7 @@ public class SpaceGame extends JFrame{
             t.schedule(new MyTimerTask(), 0, 1000/fps);
         }else
         {
+            new Menu();
             dispose();
         }
     }
