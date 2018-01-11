@@ -79,6 +79,9 @@ public class Menu extends JFrame{
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
 
+                            SpaceGame space = new SpaceGame();
+
+
                             new SpaceGame();
                             dispose();
 
