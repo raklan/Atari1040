@@ -21,9 +21,12 @@ public class PongTable extends JFrame {
     private Timer t = new Timer();
     private Pong ball;
     private Paddle paddle;
+    private Paddle paddle2;
     private int counter=0;
     private boolean up;
     private boolean down;
+    private boolean s;
+    private boolean w;
     private JLabel J;
 
     private JLabel pongImage;
@@ -62,6 +65,9 @@ public class PongTable extends JFrame {
         ball.setBackground(Color.WHITE);
         paddle = new Paddle(10, 125, 10, 35);
         paddle.setBackground(Color.WHITE);
+        paddle2=new Paddle(480,125,10,35);
+        paddle2.setBackground(Color.WHITE);
+        table.add(paddle2);
         table.add(paddle, 0);
         table.add(ball, 0);
         setFocusable(true);
@@ -79,6 +85,15 @@ public class PongTable extends JFrame {
                             //code for moving paddle up
                         }
                         break;
+                    case KeyEvent.VK_W:
+                    {
+                        w=true;
+                        if(!w)
+                        {
+                            paddle2.moveUP();
+                        }
+                        break;
+                    }
 
                     case KeyEvent.VK_DOWN:
                         down=true;
@@ -87,6 +102,15 @@ public class PongTable extends JFrame {
                         }
                         //code for moving paddle down
                         break;
+                    case KeyEvent.VK_S:
+                    {
+                        s=true;
+                        if(!s)
+                        {
+                            paddle2.moveDown();
+                        }
+                        break;
+                    }
 
                     case KeyEvent.VK_ESCAPE:
                     {
@@ -105,6 +129,12 @@ public class PongTable extends JFrame {
                     case KeyEvent.VK_DOWN:
                         down=false;
                         //code for moving paddle down
+                        break;
+                    case KeyEvent.VK_W:
+                        w=false;
+                        break;
+                    case KeyEvent.VK_S:
+                        s=false;
                         break;
                 }
             }
@@ -125,10 +155,20 @@ public class PongTable extends JFrame {
                 if (down) {
                     paddle.moveDown();
                 }
-                collide();
+                if(w)
+                {
+                    paddle2.moveUP();
+                }
+                if(s)
+                {
+                    paddle2.moveDown();
+                }
+                collide(paddle.left(), paddle.right(), paddle.bottom(), paddle.top());
+                collide(paddle2.left(), paddle2.right(), paddle2.bottom(), paddle2.top());
                 J.setText(Integer.toString(counter));
             }
             else {
+                paddle2.reset();
                 paddle.reset();
                 ball.reset();
                 counter=0;
@@ -137,16 +177,16 @@ public class PongTable extends JFrame {
     }
 
 
-    public void collide()
+    public void collide(int l,int r,int b,int t)
     {
         int right=ball.right();
         int bottom=ball.bottom();
         int left=ball.left();
         int top=ball.top();
-        int L2=paddle.left();
-        int R2=paddle.right();
-        int B2=paddle.bottom();
-        int T2=paddle.top();
+        int L2=l;
+        int R2=r;
+        int B2=b;
+        int T2=t;
         if((right>L2)&&(right<R2)&&(bottom>T2)&&(bottom<B2)||
                 (right>L2)&&(right<R2)&&(top>T2)&&(top<B2)||
                 (left>L2)&&(left<R2)&&(bottom>T2)&&(bottom<B2)||

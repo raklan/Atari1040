@@ -1,4 +1,5 @@
 package menu;
+import pong.myJoke;
 import resources.*;
 
 import javax.swing.*;
@@ -76,11 +77,11 @@ public class Menu extends JFrame{
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
                             SpaceGame space = new SpaceGame();
-                           
+
                         }
                         else if(selLocation == 2){
+                            myJoke joke=new myJoke();
                             //Instantiate Jeff's Quest Object
-                            dispose();
                         }
                         else if(selLocation == 3){
                             //Instantiate Pong Object

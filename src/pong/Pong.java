@@ -59,7 +59,7 @@ public class Pong extends GameOval
     public void changeSpeedD(){speedX*=-1;}
     public boolean checkX()
     {
-        if(this.getX()<5) {
+        if((this.getX()<5)||(this.getX()>495)) {
             return true;
         }
         else
