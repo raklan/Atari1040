@@ -1,5 +1,5 @@
 
-import menu.Menu;
+import menu.*;
 
 /**
  * Created by Jake on 12/18/2017.

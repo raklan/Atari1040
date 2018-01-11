@@ -2,16 +2,16 @@ package player;
 
 import java.io.*;
 
-public class highScoreSpaceInvaders {
+public class highScoreJEFF {
 
     int previousScore;
 
-    public int readSpaceInvadersHighScore(){
+    public int readJEFFHighScore(){
         try {
             //Create an object that opens a file for writing data
             //FileInputStream fileIn = new FileInputStream("info.txt");
             //Create a stream object that connects to the file
-            DataInputStream dataIn = new DataInputStream(new FileInputStream("highScoreSpaceInvaders.txt"));
+            DataInputStream dataIn = new DataInputStream(new FileInputStream("highScoresJEFF.txt"));
             previousScore = dataIn.readInt();
             dataIn.close();
 
@@ -21,12 +21,12 @@ public class highScoreSpaceInvaders {
         return previousScore;
     }
 
-    public void writeHighScoreSpaceInvaders(int n){
+    public void writeJEFFInvaders(int n){
         try{
             //Create an object that opens a file for writing data
             //FileOutputStream fileOut = new FileOutputStream("info.txt");
             //Create a stream object that connects to the file
-            DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("highScoreSpaceInvaders.txt"));
+            DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("highScoresJEFF.txt"));
             if(n>previousScore){
                 dataOut.writeInt(n);
                 dataOut.close();

@@ -12,7 +12,7 @@ import java.util.Random;
 import spacevader.SpaceGame;
 
 /**
- * By Ryan
+ * By Ryan The Babe
  */
 
 public class Menu extends JFrame{
@@ -190,4 +190,3 @@ public class Menu extends JFrame{
 
 
 }
-

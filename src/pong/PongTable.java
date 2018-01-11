@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.*;
 import java.awt.*;
-import resources.GameRectangle;
+import resources.*;
 
 /**
  * 
@@ -21,8 +21,13 @@ public class PongTable extends JFrame {
     private Timer t = new Timer();
     private Pong ball;
     private Paddle paddle;
+    private int counter=0;
 private boolean up;
 private boolean down;
+private JLabel J;
+
+private JLabel pongImage;
+
     public PongTable() {
         super();
         up=false;
@@ -30,9 +35,29 @@ private boolean down;
         this.getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(700, 700, 700, 700);
-        GameRectangle table = new GameRectangle(0, 50, 500, 250);
-        table.setBackground(Color.BLACK);
-        this.add(table, 0);
+        GameRectangle table = new GameRectangle(100, 100, 500, 250);
+        GameRectangle rec=new GameRectangle(0,0,700,700);
+        rec.setBackground(Color.BLACK);
+        this.add(rec,0);
+        table.setBackground(Color.BLUE);
+        J=new JLabel(Integer.toString(counter));
+        J.setFont(new Font("Impact", Font.BOLD,16));
+        J.setLocation(450,450);
+        J.setForeground(Color.WHITE);
+        J.setBounds(450,450,50,50);
+        rec.add(J);
+        pongImage = new JLabel("");
+        pongImage.setSize(new Dimension(400,100));
+        pongImage.setIcon(new ImageIcon(this.getClass().getResource("/resources/images/Pong White.png")));
+        pongImage.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
+        pongImage.setLocation(100,0);
+        pongImage.setHorizontalAlignment(SwingConstants.CENTER);
+        pongImage.setVisible(true);
+
+        rec.add(pongImage);
+
+
+        rec.add(table, 0);
         ball = new Pong(5, 5, 500, 250);
         ball.setBackground(Color.WHITE);
         paddle = new Paddle(10, 125, 10, 35);
@@ -46,7 +71,12 @@ private boolean down;
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP:
                         up=true;
+<<<<<<< HEAD
                         if (up != false) {
+=======
+                        if (!up
+                                ) {
+>>>>>>> 59eabc884465dbe730652e14a5c9502f74f57b5c
 
 
                             paddle.moveUP();
@@ -56,7 +86,7 @@ private boolean down;
 
                     case KeyEvent.VK_DOWN:
                         down=true;
-                        if(down!=false) {
+                        if(!down) {
                             paddle.moveDown();
                         }
                         //code for moving paddle down
@@ -95,10 +125,12 @@ private boolean down;
                     paddle.moveDown();
                 }
                 collide();
+                J.setText(Integer.toString(counter));
             }
             else {
                 paddle.reset();
                 ball.reset();
+                counter=0;
                 }
             }
         }
@@ -119,6 +151,7 @@ private boolean down;
                 (left>L2)&&(left<R2)&&(bottom>T2)&&(bottom<B2)||
                 (left>L2)&&(left<R2)&&(top>T2)&&(top<B2)) {
             ball.changeSpeedD();
+            counter++;
         }
     }
 
