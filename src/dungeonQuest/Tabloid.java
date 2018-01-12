@@ -4,6 +4,7 @@ package dungeonQuest;
 import javafx.embed.swing.JFXPanel;
 import resources.GameRectangle;
 import spacevader.SpaceGame;
+import menu.Menu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -101,7 +102,6 @@ public class Tabloid extends JFrame {
         character = new JLabel("");
         character.setSize(new Dimension(100,100));
         ImageIcon theImage = new ImageIcon(this.getClass().getResource("/resources/dungeon/FarmerMan.png"));
-        character.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         character.setIcon(theImage);
         character.setLocation(350,0);
         character.setVisible(true);
@@ -293,19 +293,21 @@ public class Tabloid extends JFrame {
             dispose();
             System.out.println("It took " + amount + " moves for the animals to get you");
             HighScore();
+            new Menu();
         }
         else if(prec.intersects(herorec))
         {
             dispose();
             System.out.println("It took " + amount + " moves for the animals to get you");
             HighScore();
+            new Menu();
         }
         else if (crec.intersects(herorec))
         {
             dispose();
             System.out.println("It took " + amount + " moves for the animals to get you");
             HighScore();
-
+            new Menu();
         }
     }
     public void HighScore()
@@ -335,8 +337,5 @@ public class Tabloid extends JFrame {
 //            act();
 //        }
 //    }
-    public static void main(String[]args){
-        new dungeonQuest.Tabloid();
-    }
 
 }

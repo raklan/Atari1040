@@ -42,7 +42,7 @@ public class PongTable extends JFrame {
     private JLabel pongImage;
 
     public PongTable() {
-        super();
+        super("Pong");
         up=false;
         down=false;
         this.getContentPane().setBackground(Color.WHITE);

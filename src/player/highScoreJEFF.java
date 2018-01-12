@@ -2,6 +2,10 @@ package player;
 
 import java.io.*;
 
+/*
+* Made by Jake
+* */
+
 public class highScoreJEFF {
 
     int previousScore;

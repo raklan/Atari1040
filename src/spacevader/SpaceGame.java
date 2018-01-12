@@ -39,7 +39,7 @@ public class SpaceGame extends JFrame{
 
     public SpaceGame()
     {
-        super("SpaceInvaders");
+        super("Space Invaders");
         setBounds(0,0,1500, 1000);
         getContentPane().setBackground(Color.black);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

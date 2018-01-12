@@ -78,16 +78,12 @@ public class Menu extends JFrame{
                     case KeyEvent.VK_ENTER: {
                         if (selLocation == 1){
                             //Instantiate Space Invaders Object
-
                             new SpaceGame();
                             dispose();
-
                         }
                         else if(selLocation == 2){
                             //myJoke joke=new myJoke();
                             //Instantiate Jeff's Quest Object
-
-
                             new Tabloid();
                             dispose();
 
