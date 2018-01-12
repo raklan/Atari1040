@@ -1,6 +1,6 @@
 package dungeonQuest;
 
-import javax.swing.*;
+        import javax.swing.*;
 
 public class character extends JLabel{
     protected int x, y, shoot, count, tcount;
