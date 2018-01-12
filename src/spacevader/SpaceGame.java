@@ -48,7 +48,7 @@ public class SpaceGame extends JFrame{
         fleet = new Alien[row][column];
         makeAliens();
 
-        ship = new Ship(getWidth()/2+25, getHeight()-30-50-30);
+        ship = new Ship(getWidth()/2+107/2, getHeight()-30-107-30);
         add(ship);
 
         bullets = new ArrayList<>();
@@ -99,11 +99,12 @@ public class SpaceGame extends JFrame{
                 }
             }
         });
+
         scoreBoard = new JLabel();
-        scoreBoard.setBounds(0,0,500, 25);
+        scoreBoard.setBounds(15,15,500, 25);
         scoreBoard.setText(""+score);
         scoreBoard.setForeground(Color.WHITE);
-        scoreBoard.setFont(new Font("Magneto", Font.ITALIC, 22));
+        scoreBoard.setFont(new Font("Magneto", Font.ITALIC, 30));
         add(scoreBoard, 0);
 
         t.schedule(new MyTimerTask(), 0, 1000/fps);
@@ -208,12 +209,33 @@ public class SpaceGame extends JFrame{
 
     private void makeAliens()
     {
-        int s = (getWidth()-row*50)/(row+1); //space between aliens
-        int w = 50 + s; //width of aliens + space
-        int h = 50 + 30; //vertical spacing
+        int a;//space of alien
+        int s; //space between aliens
+        int w;//space between aliens plus space of aliens
+        int h = 50 + 35; //vertical spacing
         for(int j = 0; j<fleet[0].length; j++) {
+            switch (j)
+            {
+                case 0:
+                    a = 29;
+                    break;
+                case 1:
+                    a = 50;
+                    break;
+                case 2:
+                    a = 40;
+                    break;
+                case 3:
+                    a = 50;
+                    break;
+                default:
+                    a = 0;
+                    break;
+            }
+            s = (getWidth()-row*a)/(row+1);
+            w = s + a;
             for (int i = 0; i < row; i++) {
-                fleet[i][j] = new Alien(i * w + s, 50+j*h);
+                fleet[i][j] = new Alien(i * w  + s, 50+j*h, j);
                 add(fleet[i][j]);
             }
         }
@@ -225,11 +247,14 @@ public class SpaceGame extends JFrame{
         score+=5000;
         t.cancel();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(750);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         makeAliens();
+        for(Bullet b : bullets)
+            remove(b);
+        bullets.clear();
         repaint();
         alienTime--;
         try {

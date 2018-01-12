@@ -1,4 +1,4 @@
-package dungeonQuest;
+package spacevader;
 
 //import java.awt.Toolkit.*;
 import java.awt.*;

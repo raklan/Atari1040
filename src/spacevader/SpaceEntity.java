@@ -7,6 +7,7 @@ public class SpaceEntity extends GameRectangle{
     protected int x, y;
     protected int dx = 0;
     protected int dy = 0;
+    protected EzImage image;
 
     protected SpaceEntity(int x, int y)
     {
